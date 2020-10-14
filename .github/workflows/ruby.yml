@@ -32,7 +32,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
     - name: Install postgresql
-      run: apt-get install postgresql=9.4
+      run: sudo apt-get install postgresql=9.4
     - name: Install Bundler
       run: gem install bundler:1.17.3
     - name: Install dependencies
