@@ -20,5 +20,5 @@ development:
 test:
   <<: *local_user
   <<: *pg_settings
-  host:     localhost
+  host:     postgres
   database: buzz_test
