@@ -41,7 +41,11 @@ jobs:
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: ${{ matrix.ruby-version }}
-    - name: Pre-Build Commands
+    - name: Install Bundler
+      run: gem install bundler:1.17.3
+    - name: Install dependencies
+      run: bundle install
+    - name: Pre-test steps
       env:
         PGPASSWORD: password
         PGHOST: localhost
@@ -52,9 +56,5 @@ jobs:
         psql -c 'create database buzz_test' -U postgres
         psql -c 'create role root superuser createdb createrole inherit login replication' -U postgres
         RAILS_ENV=test bundle exec rake --trace db:migrate test
-    - name: Install Bundler
-      run: gem install bundler:1.17.3
-    - name: Install dependencies
-      run: bundle install
     - name: Run tests
-      run: bundle exec rake
+      run: bundle exec rspec spec
