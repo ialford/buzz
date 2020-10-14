@@ -20,7 +20,7 @@ development:
 test:
 #   <<: *local_user
   <<: *pg_settings
-  host:     postgres
+  host:     localhost
   database: buzz_test
   username: postgres
   password: <%= ENV["POSTGRES_PASSWORD"] %>
