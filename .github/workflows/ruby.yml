@@ -44,6 +44,8 @@ jobs:
     - name: Pre-Build Commands
       env:
         PGPASSWORD: password
+        PGHOST: localhost
+        PGUSER: postgres
       run: |
         cp config/database_example.yml config/database.yml
         cp config/secrets.example.yml config/secrets.yml
